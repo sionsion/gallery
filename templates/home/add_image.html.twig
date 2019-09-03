@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Log in!{% endblock %}
+
+{% block body %}
+    <ul class="cd-hero-slider">
+
+                <!-- Page 1 Gallery One -->
+                <li class="selected"> 
+                    <div class="cd-full-width">
+                        <div class="container-fluid js-tm-page-content tm-page-pad" data-page-no="5">
+                            <div class="tm-contact-page">  
+{{ form_start(uForm) }}
+    
+    {% if errors %}
+        <div class="alert alert-danger">
+            {% for err in errors %}
+                {{ err }}<br>
+            {% endfor %}
+        </div>
+    {% endif %}
+
+    <h1 class="h3 mb-3 font-weight-normal">Добавяне на снимка към Галерията</h1>
+
+    <div class="form-group">
+        {{ form_row(uForm.ename) }}
+    </div>
+    <div class="form-group">
+        {{ form_row(uForm.file) }}
+    </div>
+
+    <input type="hidden" name="_csrf_token"
+           value="{{ csrf_token('authenticate') }}"
+    >
+    {#
+        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+        See https://symfony.com/doc/current/security/remember_me.html
+
+        <div class="checkbox mb-3">
+            <label>
+                <input type="checkbox" name="_remember_me"> Remember me
+            </label>
+        </div>
+    #}
+    <div class="form-group">
+        <button class="btn btn-lg btn-primary" type="submit">
+            Изпрати
+        </button>
+    </div>
+{{ form_end(uForm) }}
+                            </div>
+                        </div>
+                    </div>
+                </li>
+    </ul> <!-- .cd-hero-slider -->
+    
+{% endblock %}

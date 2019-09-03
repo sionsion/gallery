@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        
+        <!-- load stylesheets -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">  
+        <!-- Google web font "Open Sans" -->
+        <link rel="stylesheet" href="Font-Awesome-4.7/css/font-awesome.min.css">                
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="/css/bootstrap.min.css">                                      
+        <!-- Bootstrap style -->
+        <link rel="stylesheet" href="/css/hero-slider-style.css">                              
+        <!-- Hero slider style (https://codyhouse.co/gem/hero-slider/) -->
+        <link rel="stylesheet" href="/css/magnific-popup.css">                                 
+        <!-- Magnific popup style (http://dimsemenov.com/plugins/magnific-popup/) -->
+        <link rel="stylesheet" href="/css/templatemo-style.css">
+        
+        {% block stylesheets %}{% endblock %}
+        
+        <script src="/js/jquery-1.11.3.min.js"></script>
+        <!-- jQuery (https://jquery.com/download/) -->
+        <script>
+		
+            var tm_gray_site = false;
+            
+            if(tm_gray_site) {
+                $('html').addClass('gray');
+            }
+            else {
+                $('html').removeClass('gray');   
+            }
+        </script>
+    </head>
+    <body>
+        <div class="cd-hero">
+            {{ include('partials/header.html.twig') }}
+            {% block body %}{% endblock %}
+            {{ include('partials/footer.html.twig') }}
+        </div> <!-- .cd-hero -->
+        
+        <!-- Preloader, https://ihatetomatoes.net/create-custom-preloading-screen/ -->
+        <div id="loader-wrapper">
+            
+            <div id="loader"></div>
+            <div class="loader-section section-left"></div>
+            <div class="loader-section section-right"></div>
+
+        </div>
+        {% block javascripts %}{% endblock %}
+        
+        <script src="js/tether.min.js"></script> <!-- Tether (http://tether.io/)  --> 
+        <script src="js/bootstrap.min.js"></script>             <!-- Bootstrap js (v4-alpha.getbootstrap.com/) -->
+        <!--script src="js/hero-slider-main.js"></script-->          <!-- Hero slider (https://codyhouse.co/gem/hero-slider/) -->
+        <script src="js/jquery.magnific-popup.min.js"></script> <!-- Magnific popup (http://dimsemenov.com/plugins/magnific-popup/) -->
+        <script src="js/custom.js"></script>
+    </body>
+</html>

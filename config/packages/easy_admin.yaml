@@ -1,0 +1,66 @@
+easy_admin:
+    site_name: 'Qnzar Admin'
+    user:
+        display_name: true
+        display_avatar: false
+        name_property_path: 'name'
+    list:
+        max_results: 10
+    formats:
+        date:     'd/m/Y'
+        time:     'H:i'
+        datetime: 'd/m/Y H:i:s'
+        number: '%.2f'
+    entities:
+        # List the entity class name you want to manage
+        Gallery:
+            class: App\Entity\Gallery
+            label: 'Галерия'
+            list:
+                title: 'Галерия от Снимки'
+                sort: ['created_at', 'DESC']
+                fields: 
+                    - id
+                    - { property: 'ename', label: 'Заглавие' } 
+                    - { property: 'file_thumb', type: 'image'}
+                    - { property: 'user.email', label: 'Потребител' } 
+                    - created_at
+            show:
+                title: '%%entity_label%% (#%%entity_id%%)'
+                fields: 
+                    - id
+                    - { property: 'file_thumb', type: 'image'}
+                    - created_at
+            form:
+                fields: 
+                    - { property: 'ename', label: 'Заглавие' } 
+                    - { property: 'file', type: 'file_upload', type_options: { required: false, upload_dir: 'public/images/gallery', upload_filename: '[timestamp]-[randomhash].[extension]', download_path: '\App\Entity\Gallery::getFullImagePath', allow_delete: false }}
+            new:
+                fields: 
+                    - { property: 'file', type: 'file_upload', type_options: { required: true, upload_dir: 'public/images/gallery', upload_filename: '[timestamp]-[randomhash].[extension]', download_path: '\App\Entity\Gallery::getFullImagePath', allow_delete: false }}
+                    
+        User:
+            class: App\Entity\User
+            form:
+                fields: 
+                    - { property: 'name', type: 'text', label: 'Име' }
+                    - { property: 'email', type: 'email', label: 'Email' }
+                    - { property: 'password', type: Symfony\Component\Form\Extension\Core\Type\PasswordType, algorithm: 'auto', label: 'Парола', type_options: { required: false, empty_data: '' } }
+                    - { property: 'roles', label: 'Role', type: choice, type_options: { mapped: true, expanded: true, multiple: true, choices: { 'Потребител': 'ROLE_USER', 'Администратор': 'ROLE_ADMIN' } } }
+            new:
+                fields: 
+                    - { property: 'password', type: 'password', label: 'Парола', type_options: { required: true } }
+        EmailLog:
+            class: App\Entity\SendEmailsLog
+            disabled_actions: ['edit', 'new']
+            list:
+                title: 'Email Log'
+                sort: ['created_at', 'DESC']
+                fields: 
+                    - id
+                    - { property: 'sendto', label: 'Изпратено на' } 
+                    - { property: 'user.email', label: 'Потребител' } 
+                    - { property: 'body', type: 'text'}
+                    - { property: 'file', type: 'image'}
+                    - created_at
+            

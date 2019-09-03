@@ -1,0 +1,6 @@
+app_homepage:
+    path: /
+    controller: App\Controller\HomeController::index
+add_image:
+    path: /add-image
+    controller: App\Controller\HomeController::add_image

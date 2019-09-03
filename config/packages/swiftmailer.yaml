@@ -1,0 +1,5 @@
+swiftmailer:
+    url: '%env(MAILER_URL)%'
+    spool: { type: 'memory' }
+    transport: 'sendmail'
+    command: '/usr/sbin/sendmail -oi -t'

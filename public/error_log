@@ -1,0 +1,17 @@
+[02-Sep-2019 01:17:08 Europe/Sofia] PHP Fatal error:  Class 'App\Controller\SymfonyController' not found in /home/dvsportbg/symfony.qnzar.com/gallery/src/Controller/HomeController.php on line 15
+[02-Sep-2019 01:17:09 Europe/Sofia] PHP Fatal error:  Class 'App\Controller\SymfonyController' not found in /home/dvsportbg/symfony.qnzar.com/gallery/src/Controller/HomeController.php on line 15
+[02-Sep-2019 02:38:22 Europe/Sofia] PHP Fatal error:  Allowed memory size of 1073741824 bytes exhausted (tried to allocate 1056968704 bytes) in /home/dvsportbg/symfony.qnzar.com/gallery/src/Controller/HomeController.php on line 38
+[02-Sep-2019 06:01:06 Europe/Sofia] PHP Fatal error:  Method App\Entity\User::__toString() must not throw an exception, caught ErrorException: Notice: Undefined property: App\Entity\User::$name in /home/dvsportbg/symfony.qnzar.com/gallery/vendor/twig/twig/src/Extension/CoreExtension.php on line 0
+[02-Sep-2019 06:01:08 Europe/Sofia] PHP Fatal error:  Method App\Entity\User::__toString() must not throw an exception, caught ErrorException: Notice: Undefined property: App\Entity\User::$name in /home/dvsportbg/symfony.qnzar.com/gallery/vendor/twig/twig/src/Extension/CoreExtension.php on line 0
+[02-Sep-2019 06:01:10 Europe/Sofia] PHP Fatal error:  Method App\Entity\User::__toString() must not throw an exception, caught ErrorException: Notice: Undefined property: App\Entity\User::$name in /home/dvsportbg/symfony.qnzar.com/gallery/vendor/twig/twig/src/Extension/CoreExtension.php on line 0
+[02-Sep-2019 14:35:25 Europe/Sofia] PHP Fatal error:  Non-abstract method App\Controller\AdminController::initialize() must contain body in /home/dvsportbg/symfony.qnzar.com/gallery/src/Controller/AdminController.php on line 19
+[02-Sep-2019 14:35:26 Europe/Sofia] PHP Fatal error:  Non-abstract method App\Controller\AdminController::initialize() must contain body in /home/dvsportbg/symfony.qnzar.com/gallery/src/Controller/AdminController.php on line 19
+[02-Sep-2019 19:03:15 Europe/Sofia] PHP Fatal error:  Uncaught Symfony\Component\Debug\Exception\FatalThrowableError: syntax error, unexpected 'print_r' (T_STRING) in /home/dvsportbg/symfony.qnzar.com/gallery/src/Entity/Gallery.php:171
+Stack trace:
+#0 /home/dvsportbg/symfony.qnzar.com/gallery/vendor/composer/ClassLoader.php(322): Composer\Autoload\includeFile('/home/dvsportbg...')
+#1 /home/dvsportbg/symfony.qnzar.com/gallery/vendor/symfony/debug/DebugClassLoader.php(163): Composer\Autoload\ClassLoader->loadClass('App\\Entity\\Gall...')
+#2 [internal function]: Symfony\Component\Debug\DebugClassLoader->loadClass('App\\Entity\\Gall...')
+#3 [internal function]: spl_autoload_call('App\\Entity\\Gall...')
+#4 /home/dvsportbg/symfony.qnzar.com/gallery/vendor/doctrine/persistence/lib/Doctrine/Common/Persistence/AbstractManagerRegistry.php(166): ReflectionClass->__construct('App\\Entity\\Gall...')
+#5 /home/dvsportbg/symfony.qnzar.com/gallery/vendor/easycorp/easyadmin-bundle/src/Configuration/MetadataConfigPass.php(29): Doctrine\Common\Persistence\AbstractManagerRegistry->g in /home/dvsportbg/symfony.qnzar.com/gallery/src/Entity/Gallery.php on line 171
+[02-Sep-2019 19:27:34 Europe/Sofia] PHP Fatal error:  Non-abstract method App\Controller\AdminController::initialize() must contain body in /home/dvsportbg/symfony.qnzar.com/gallery/src/Controller/AdminController.php on line 25

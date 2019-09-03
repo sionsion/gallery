@@ -1,0 +1,37 @@
+{% extends 'base_home.html.twig' %}
+
+{% block title %}Галерия{% endblock %}
+
+{% block body %}
+            <ul class="cd-hero-slider">
+
+                <!-- Page 1 Gallery One -->
+                <li class="selected">                    
+                    <div class="cd-full-width">
+                        <div class="container-fluid js-tm-page-content" data-page-no="1" data-page-type="gallery">
+                            <div class="tm-img-gallery-container">
+                                <div class="tm-img-gallery gallery-one">
+                                <!-- Gallery One pop up connected with JS code below -->
+                                    {% for item in images %}
+                                    <div class="grid-item">
+                                        <figure class="effect-sadie">
+                                            <img src="/{{ item.filethumb }}" alt="Image" class="img-fluid tm-img">
+                                            <figcaption>
+                                                <h2 class="tm-figure-title">{{ item.ename }}</h2>
+                                                <!--p class="tm-figure-description">Set true or false in HTML script tag for this page black and white.</p-->
+                                                <a href="/{{ item.file }}">View more</a>
+                                            </figcaption>           
+                                        </figure>
+                                    </div>
+                                    {% endfor %}
+                                    <div class="clear"></div>
+                                    {{ include('partials/pagination.html.twig') }}
+                                    
+                                </div>                                 
+                            </div>
+                        </div>                                                    
+                    </div>                    
+                </li>
+
+            </ul> <!-- .cd-hero-slider -->
+{% endblock %}

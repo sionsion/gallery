@@ -1,0 +1,20 @@
+{% if maxPages > 1 %}
+<div class="pagination pagination-sm">
+    {# `«` arrow  #}
+    <div {{ thisPage == 1 ? 'class="disabled"' }}>
+        <a href="{{ path(routeName, {page: thisPage-1 < 1 ? 1 : thisPage-1}) }}">«</a>
+    </div>
+
+    {# Render each page number #}
+    {% for i in 1..maxPages %}
+    <div {{ thisPage == i ? 'class="active"' }}>
+    <a href="{{ path(routeName, {page: i}) }}">{{ i }}</a>
+    </div>
+    {% endfor %}
+
+    {# `»` arrow #}
+    <div {{ thisPage == maxPages ? 'class="disabled"' }}>
+        <a href="{{ path(routeName, {page: thisPage+1 <= maxPages ? thisPage+1 : thisPage}) }}">»</a>
+    </div>
+</div>
+{% endif %}
