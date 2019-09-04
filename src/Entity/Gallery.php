@@ -8,8 +8,12 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\GalleryRepository")
+ * @Vich\Uploadable
  */
 class Gallery
 {
@@ -30,6 +34,12 @@ class Gallery
      * @ORM\Column(type="string", length=150)
      */
     private $file;
+    
+    /**
+     * @Vich\UploadableField(mapping="gallery_files", fileNameProperty="file")
+     * @var File
+     */
+    private $imageFile;
     
     /**
      * @ORM\Column(type="string", length=150)
@@ -84,15 +94,42 @@ class Gallery
 
         return $this;
     }
+    /**
+     * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
+     * of 'UploadedFile' is injected into this setter to trigger the  update. If this
+     * bundle's configuration parameter 'inject_on_load' is set to 'true' this setter
+     * must be able to accept an instance of 'File' as the bundle will inject one here
+     * during Doctrine hydration.
+     *
+     * @param imageFile |UploadedFile $imageFile
+     */
+    public function setImageFile(File $imageFile = null)
+    {
+        $this->imageFile = $imageFile;
+
+        if ($imageFile) {
+            $this->updated_at = new \DateTime('now');
+        }
+    }
+
+    public function getImageFile()
+    {
+        return $this->imageFile;
+    }
 
     public function getFile(): ?string
     {
         return $this->file;
     }
-
-    public function setFile(string $file): self
+    public function setFile(?string $imageFile): self
     {
-        $this->file = $file;
+        $this->file = $imageFile;
+        
+        $file_arr = explode('/', $this->file);
+        $image_folder = count($file_arr)>2?$file_arr[count($file_arr)-2]:'images';
+        $new_rel_path = str_replace("/{$image_folder}/", "/{$image_folder}/thumb/", $this->file);
+        
+        $this->setFileThumb( $new_rel_path );
 
         return $this;
     }
@@ -146,7 +183,7 @@ class Gallery
     }
     
     public function __toString() {
-        return $this->name;
+        return $this->ename;
     }
 
     public function getUser(): ?User

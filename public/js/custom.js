@@ -15,17 +15,18 @@
                 var totalPageHeight = $('.cd-slider-nav').height()
                                         + pageContentHeight
                                         + $('.tm-footer').outerHeight();
+                var pagerHeight = $('.pagination').height();
 
                 // Adjust layout based on page height and window height
                 if(totalPageHeight > $(window).height()) 
                 {
                     $('.cd-hero-slider').addClass('small-screen');
-                    $('.cd-hero-slider li:nth-of-type(' + pageNo + ')').css("min-height", totalPageHeight + "px");
+                    $('.cd-hero-slider > li:nth-of-type(' + pageNo + ')').css("min-height", (totalPageHeight+pagerHeight) + "px");
                 }
                 else 
                 {
                     $('.cd-hero-slider').removeClass('small-screen');
-                    $('.cd-hero-slider li:nth-of-type(' + pageNo + ')').css("min-height", "100%");
+                    $('.cd-hero-slider > li:nth-of-type(' + pageNo + ')').css("min-height", "100%");
                 }
             }
 

@@ -16,3 +16,5 @@
 [31-Aug-2019 15:19:47 Europe/Sofia] PHP Fatal error:  Out of memory (allocated 662810624) (tried to allocate 20480 bytes) in /home/dvsportbg/symfony.qnzar.com/gallery/vendor/symfony/flex/src/Cache.php on line 44
 [31-Aug-2019 15:19:47 Europe/Sofia] PHP Fatal error:  Out of memory (allocated 662810624) (tried to allocate 20480 bytes) in phar:///home/dvsportbg/symfony.qnzar.com/gallery/composer.phar/src/Composer/Console/Application.php on line 82
 [31-Aug-2019 16:11:45 Europe/Sofia] PHP Fatal error:  Out of memory (allocated 236593152) (tried to allocate 589824 bytes) in phar:///home/dvsportbg/symfony.qnzar.com/gallery/composer.phar/src/Composer/Repository/ComposerRepository.php on line 597
+[03-Sep-2019 19:31:41 Europe/Sofia] PHP Fatal error:  Out of memory (allocated 73273344) (tried to allocate 4065880 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/Util/RemoteFilesystem.php on line 451
+[03-Sep-2019 20:01:19 Europe/Sofia] PHP Fatal error:  Out of memory (allocated 58720256) (tried to allocate 1351680 bytes) in phar:///opt/cpanel/composer/bin/composer/src/Composer/Util/RemoteFilesystem.php on line 451

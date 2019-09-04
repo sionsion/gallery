@@ -6,6 +6,9 @@ use App\Entity\Gallery;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 
+use Pagerfanta\Pagerfanta;
+use Pagerfanta\Adapter\DoctrineORMAdapter;
+
 /**
  * @method Gallery|null find($id, $lockMode = null, $lockVersion = null)
  * @method Gallery|null findOneBy(array $criteria, array $orderBy = null)
@@ -27,6 +30,27 @@ class GalleryRepository extends ServiceEntityRepository
             ->setMaxResults(1)
             ->getOneOrNullResult()
         ;
+    }
+    
+    /**
+     * @param int    $page
+     * @param int    $limit
+     * @return Pagerfanta
+     */
+    public function pagenate(int $page = 1, int $limit = 8)
+    {
+        $queryBuilder = $this->createQueryBuilder('a');
+
+        $queryBuilder->select('a')
+                ->orderBy('a.created_at', 'DESC');
+
+        $adapter = new DoctrineORMAdapter($queryBuilder);
+        $pagerfanta = new Pagerfanta($adapter);
+
+        $pagerfanta->setMaxPerPage($limit);
+        $pagerfanta->setCurrentPage($page);
+
+        return $pagerfanta;
     }
     
     // /**

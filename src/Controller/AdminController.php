@@ -33,18 +33,8 @@ class AdminController extends BaseAdminController
     public function updateEntity($entity)
     {
         $request = Request::createFromGlobals();
-        
-        if (method_exists($entity, 'setUpdatedAt')) {
-            $entity->setUpdatedAt(new \DateTime());
-        }
-        
-        if (method_exists($entity, 'setUpdatedBy')) {
-            $user = $this->getUser();
-            $userId = $user->getId();
-            $entity->setUpdatedBy($userId);
-        }
-        
-        
+                
+        /*
         if (method_exists($entity, 'setFile')) {
             
             if(isset($_FILES['gallery']['name']['file']['file']) and $_FILES['gallery']['name']['file']['file']){
@@ -98,6 +88,8 @@ class AdminController extends BaseAdminController
                 }
             }
         }
+         * 
+         */
         
         if (method_exists($entity, 'setPassword')) {
             if( isset($request->get("user", null)['password']) and $request->get("user", null)['password']){

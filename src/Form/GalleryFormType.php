@@ -8,6 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Vich\UploaderBundle\Form\Type\VichFileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\NotBlank;
@@ -26,11 +27,11 @@ class GalleryFormType extends AbstractType
                     'placeholder'=>'Заглавие',
                 ],
                 ])
-            ->add('file', FileType::class, [
+            ->add('imageFile', VichFileType::class, [
 
                 'label' => false,
-                // unmapped means that this field is not associated to any entity property
-                'mapped' => false,
+                'allow_delete' => true,
+ 		'download_link' => true,
 
                 // make it optional so you don't have to re-upload the PDF file
                 // everytime you edit the Product details

@@ -34,10 +34,10 @@ easy_admin:
             form:
                 fields: 
                     - { property: 'ename', label: 'Заглавие' } 
-                    - { property: 'file', type: 'file_upload', type_options: { required: false, upload_dir: 'public/images/gallery', upload_filename: '[timestamp]-[randomhash].[extension]', download_path: '\App\Entity\Gallery::getFullImagePath', allow_delete: false }}
+                    - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType',  type_options: { required: false, image_uri: false, }}
             new:
                 fields: 
-                    - { property: 'file', type: 'file_upload', type_options: { required: true, upload_dir: 'public/images/gallery', upload_filename: '[timestamp]-[randomhash].[extension]', download_path: '\App\Entity\Gallery::getFullImagePath', allow_delete: false }}
+                    - { property: 'imageFile', type: 'Vich\UploaderBundle\Form\Type\VichImageType', type_options: { required: true }}
                     
         User:
             class: App\Entity\User
